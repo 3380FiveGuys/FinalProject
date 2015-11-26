@@ -1,0 +1,6 @@
+Sale Record ID,Sale Date,Customer Record ID,Register Number,Total Price,Discount,New Liability,Total Tax,Total,Tendered Amount,Change Returned,Payment Type,Card Type,Name on Card,Card Last Four Digits,Receipt Number,Bank Authorization Number
+428594725,11/8/2015 0:17,1342651,15,22,0,0,1.86,28.26,28.26,0,credit,VISA,BENDER/JIM ,2243,7.55112E+17,02069G
+428596273,11/8/2015 0:27,1342651,15,7,0,0,0.59,8.85,8.85,0,credit,VISA,FARON/BRIAN E,9574,7.55112E+17,8898
+428596799,11/8/2015 0:31,1342651,15,5,0,0,0.42,5.42,8,2.58,cash,,,,7.55112E+17,
+428600199,11/8/2015 0:54,1342651,15,6.5,0,0,0.55,8.22,8.22,0,credit,VISA,                         /,8004,7.55112E+17,20202
+428604686,11/8/2015 1:31,1342651,14,14,7,0,0.59,7.59,7.59,0,credit,MASTERCARD,BURTON/KIM ,13,7.55111E+17,07583P

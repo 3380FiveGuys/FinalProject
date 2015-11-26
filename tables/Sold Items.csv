@@ -1,0 +1,6 @@
+Sale Record ID,Sale Date,Customer Record ID,Item Description,Department,Category,UPC Code,Store Code,Unit Price,Quantity,Total Price,Discount,Total,Cost of Goods Sold,Register Number,Supplier Name
+428594725,11/8/2015 0:17,1342651,Hirter Morchl- pint,Beer,Pint,,4E+11,5.5,4,22,0,22,0,15,Flechtel
+428596273,11/8/2015 0:27,1342651,Jim Bean- Single (1.5 oz),Liquor,Whiskey,,4E+11,3.5,2,7,0,7,0,15,Major Brands
+428596799,11/8/2015 0:31,1342651,Shiphead-Pint,Beer,Pint,,4E+11,5,1,5,0,5,0,15,Major Brands
+428600199,11/8/2015 0:54,1342651,Schnicklefritz- pint,Beer,Pint,,4E+11,6.5,1,6.5,0,6.5,0,15,not tracked
+428604686,11/8/2015 1:31,1342651,Balvenie 14- Single (2oz),Liquor,Scotch,,4E+11,14,1,14,7,7,0,14,not tracked

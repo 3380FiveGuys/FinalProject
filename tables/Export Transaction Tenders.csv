@@ -1,0 +1,6 @@
+Transaction ID,Time,Register,Cashier,Operation Type,Customer Name,Customer Email,Subtotal,Discount,New Liabilities,Tax,Total,Gratuity,Amount Tendered,Change Returned,Receipt Number,Tender Type,Card Type,Last 4 Digits of Card Number
+428604686,11/8/2015 1:31,14,Kim Burton,sale,Walk In,,14,7,0,0.59,7.59,0,7.59,0,*0755111411081510185,Credit,MASTERCARD,"""0013"""
+428600199,11/8/2015 0:54,15,Kim Burton,sale,Walk In,,6.5,0,0,0.55,8.22,1.17,8.22,0,*0755111511081510218,Credit,VISA,"""8004"""
+428596799,11/8/2015 0:31,15,Rachel Dicke,sale,Walk In,,5,0,0,0.42,5.42,0,8,2.58,*0755111511081510217,Cash,,
+428596273,11/8/2015 0:27,15,Rachel Dicke,sale,Walk In,,7,0,0,0.59,8.85,1.26,8.85,0,*0755111511081510216,Credit,VISA,"""9574"""
+428594725,11/8/2015 0:17,15,Rachel Dicke,sale,Walk In,,22,0,0,1.86,28.26,4.4,28.26,0,*0755111511081510215,Credit,VISA,"""2243"""

@@ -1,0 +1,6 @@
+Transaction ID,Transaction Type,Store Code,Item Description,Category,Department,Supplier,Supplier Code,Cost,Price,Quantity,Modifiers,Subtotal,Tax,Discount,Total,Cashier,Time,Register
+428594725,sale,4E+11,Hirter Morchl- pint,Pint,Beer,Flechtel,,0,5.5,4,0,22,1.86,0,23.86,Rachel Dicke,11/8/2015 0:17,Register 15
+428596273,sale,4E+11,Jim Bean- Single (1.5 oz),Whiskey,Liquor,Major Brands,,0,3.5,2,0,7,0.59,0,7.59,Rachel Dicke,11/8/2015 0:27,Register 15
+428596799,sale,4E+11,Shiphead-Pint,Pint,Beer,Major Brands,,0,5,1,0,5,0.42,0,5.42,Rachel Dicke,11/8/2015 0:31,Register 15
+428600199,sale,4E+11,Schnicklefritz- pint,Pint,Beer,not tracked,,0,6.5,1,0,6.5,0.55,0,7.05,Kim Burton,11/8/2015 0:54,Register 15
+428604686,sale,4E+11,Balvenie 14- Single (2oz),Scotch,Liquor,not tracked,,0,14,1,0,14,0.59,7,7.59,Kim Burton,11/8/2015 1:31,Register 14
