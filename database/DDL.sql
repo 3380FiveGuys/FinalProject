@@ -19,7 +19,7 @@ CREATE TABLE transaction(
   timedate varchar(16), /*e.g.: '12/11/2015 14:15' */
   quantity integer,
   cashier varchar(50) REFERENCES employee(cashier),
-  c_type varchar(10) REFERENCES customer_type(customer_name),
+  c_type varchar(10),
   price decimal(5,2),
   total decimal (7,2)
 ) ENGINE = INNODB;
