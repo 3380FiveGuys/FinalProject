@@ -32,6 +32,7 @@ CREATE TABLE transaction(
   pay_method varchar(10) REFERENCES payment_method(tender_type),
   type_of_card varchar(16) REFERENCES card_type(card),
   receipt_num bigint,
+  gratuity decimal(6,2),
   subtotal decimal(6,2),
   discount decimal(6,2),
   tax decimal(5,2),
