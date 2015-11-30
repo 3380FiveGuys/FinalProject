@@ -1,4 +1,5 @@
 /*** DDL.sql ***/
+/*
 CREATE TABLE brand(
   supplier varchar(15)
 ) ENGINE = INNODB;
@@ -11,6 +12,7 @@ CREATE TABLE food_category(
   department varchar(15),
   category varchar(15)
 ) ENGINE = INNODB;
+*/
 
 CREATE TABLE transaction(
   transaction_id,
@@ -20,9 +22,11 @@ CREATE TABLE transaction(
   total decimal (7,2)
 ) ENGINE = INNODB;
 
+/*
 CREATE TABLE food_transacion(
 
 ) ENGINE = INNODB;
+*/
 
 CREATE TABLE customer_type(
   customer_name varchar(10)
