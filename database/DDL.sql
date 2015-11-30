@@ -6,7 +6,7 @@ CREATE TABLE brand(
 
 CREATE TABLE food(
   item_description varchar(25) NOT NULL,
-  sale_record_id long integer REFERENCES transaction(transaction_id),
+  sale_record_id bigint REFERENCES transaction(transaction_id),
   supplier varchar(15) REFERENCES brand,
   category varchar(20) REFERENCES food_category,
   unit_price decimal(6,2),
@@ -24,14 +24,14 @@ CREATE TABLE food_category(
 ) ENGINE = INNODB;
 
 CREATE TABLE transaction(
-  transaction_id long integer NOT NULL,
+  transaction_id bigint NOT NULL,
   timedate datetime NOT NULL, /*e.g.: '12/11/2015 14:15' */
   cashier varchar(50) REFERENCES employee(cashier),
   c_type varchar(10) REFERENCES customer_type(customer_name),
   o_type varchar(10) REFERENCES operation_type(type),
   pay_method varchar(10) REFERENCES payment_method(tender_type),
   type_of_card varchar(16) REFERENCES card_type(card),
-  receipt_num long integer,
+  receipt_num bigint,
   subtotal decimal(6,2),
   discount decimal(6,2),
   tax decimal(5,2),
@@ -40,7 +40,7 @@ CREATE TABLE transaction(
 ) ENGINE = INNODB;
 
 CREATE TABLE food_transacion(
-  transaction_id long integer REFERENCES transaction,
+  transaction_id bigint REFERENCES transaction,
   timedate datetime REFERENCES transaction,
   item_description varchar(25) REFERENCES food,
   PRIMARY KEY(transaction_id, timedate, item_description)
