@@ -22,15 +22,11 @@
           <input type='password' id='pass' name='password' placeholder='password'><br>
         </div>
         <div id='inputButtonDiv'>
-          <button type='submit' id='registerButton' name='button' value='register'>Register</button>
           <button type='submit' id='loginButton' name='button' value='login'>Log in</button>
         </div>
         <?php
           if($error != ''){
             echo "<p>".$error."</p>";
-          }
-          if($success != ''){
-            echo "<p>".$success."</p>";
           }
         ?>
       </form>
