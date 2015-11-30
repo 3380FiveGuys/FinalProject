@@ -15,7 +15,7 @@ CREATE TABLE food_category(
 */
 
 CREATE TABLE transaction(
-  transaction_id,
+  transaction_id long int PRIMARY KEY,
   timedate varchar(16), /*e.g.: '12/11/2015 14:15' */
   quantity integer,
   price decimal(5,2),
@@ -29,7 +29,8 @@ CREATE TABLE food_transacion(
 */
 
 CREATE TABLE customer_type(
-  customer_name varchar(10)
+  customer_name varchar(10),
+  id long int REFERENCES transaction(transaction_id)
 ) ENGINE = INNODB;
 
 CREATE TABLE employee(
