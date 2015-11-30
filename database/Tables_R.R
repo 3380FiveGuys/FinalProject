@@ -1,5 +1,5 @@
 #SET WORKING DIRECTORY
-setwd("/Users/CMV/Desktop/FS2015/CS3380/FinalProject/Tables")
+setwd("/Users/CMV/Desktop/FS2015/CS3380/FinalProject/tables")
 
 #IMPORT CSV TABLES
 DetailedTransactions <- read.csv('Detailed Transactions.csv',header=TRUE,sep=",")
