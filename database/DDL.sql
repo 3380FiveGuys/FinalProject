@@ -14,7 +14,7 @@ CREATE TABLE food(
   price_total decimal(6,2),
   item_discount decimal(6,2),
   price decimal(6,2),
-  PRIMARY KEY(sale_record_id)
+  PRIMARY KEY(transaction_id)
 ) ENGINE = INNODB;
 
 CREATE TABLE food_category(
