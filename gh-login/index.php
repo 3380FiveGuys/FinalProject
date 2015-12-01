@@ -15,7 +15,7 @@
   <body>
     <h3 id='title'>G&uuml;nter Hans - Login</h3>
     <div class='content'>
-      <form id='loginForm' action='login.php' method='POST'>
+      <form id='loginForm' action='users.php' method='POST'>
         <h3>Login</h3>
         <div id='inputTextDiv'>
           <input type='text' id='user' name='username' placeholder='username'><br>

@@ -4,7 +4,7 @@
   session_start();
 	$loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
 	if (!$loggedIn) {
-		header("Location: login.php");
+		header("Location: users.php");
 		exit;
 	}
 ?>
@@ -23,7 +23,7 @@
       </form>
     </div>
     <div id='content' class='content'>
-      <form id='registerForm' action='login.php' method='POST'>
+      <form id='registerForm' action='users.php' method='POST'>
         <p>Enter a username and password to register a user</p>
         <div id='inputTextDiv'>
           <input type='text' id='user' name='username' placeholder='username'><br>
@@ -32,6 +32,14 @@
         <div id='inputButtonDiv'>
           <button type='submit' id='formButton' name='button' value='register'>Register</button>
         </div>
+        <?php
+          if($error!=''){
+            echo "<p>".$error."</p>";
+          }
+          if($success !=''){
+            echo "<p>".$success."</p>";
+          }
+        ?>
       </form>
     </div>
   </body>
