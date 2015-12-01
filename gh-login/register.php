@@ -25,6 +25,7 @@
     <div id='content' class='content'>
       <form id='registerForm' action='users.php' method='POST'>
         <p>Enter a username and password to register a user</p>
+        <input type=hidden name='requestFromRegister' value=true>
         <div id='inputTextDiv'>
           <input type='text' id='user' name='username' placeholder='username'><br>
           <input type='password' id='pass' name='password' placeholder='password'><br>
@@ -33,10 +34,10 @@
           <button type='submit' id='formButton' name='button' value='register'>Register</button>
         </div>
         <?php
-          if($error!=''){
+          if($error != ''){
             echo "<p>".$error."</p>";
           }
-          if($success !=''){
+          if($success != ''){
             echo "<p>".$success."</p>";
           }
         ?>
