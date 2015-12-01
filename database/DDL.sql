@@ -6,9 +6,9 @@ CREATE TABLE brand(
 
 CREATE TABLE food(
   item_description varchar(25),
-  transaction_id bigint REFERENCES transaction,
-  supplier varchar(15) REFERENCES brand,
-  category varchar(20) REFERENCES food_category,
+  transaction_id bigint REFERENCES transaction ON DELETE CASCADE,
+  supplier varchar(15) REFERENCES brand ON DELETE CASCADE,
+  category varchar(20) REFERENCES food_category ON DELETE CASCADE,
   unit_price decimal(6,2),
   quantity integer,
   price_total decimal(6,2),
@@ -25,9 +25,9 @@ CREATE TABLE food_category(
 CREATE TABLE transaction(
   transaction_id bigint REFERENCES operation_type,
   timedate datetime, /*e.g.: '12/11/2015 14:15' */
-  c_name varchar(10) REFERENCES customer_type(customer_name),
-  cashier varchar(50) REFERENCES employee(cashier),
-  receipt_num varchar(10) REFERENCES payment_method(receipt_num),
+  c_name varchar(10) REFERENCES customer_type(customer_name) ON DELETE CASCADE,
+  cashier varchar(50) REFERENCES employee(cashier) ON DELETE CASCADE,
+  receipt_num varchar(10) REFERENCES payment_method(receipt_num) ON DELETE CASCADE,
   gratuity decimal(6,2),
   subtotal decimal(6,2),
   discount decimal(6,2),
@@ -57,7 +57,7 @@ CREATE TABLE operation_type(
 
 CREATE TABLE payment_method(
   tender_type varchar(10),
-  receipt_num varchar(20) REFERENCES card_type
+  receipt_num varchar(20) REFERENCES card_type ON DELETE CASCADE
 ) ENGINE = INNODB;
 
 CREATE TABLE card_type(
