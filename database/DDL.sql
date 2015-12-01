@@ -1,12 +1,12 @@
 /*** DDL.sql ***/
 
 CREATE TABLE brand(
-  supplier varchar(15) PRIMARY KEY NOT NULL
+  supplier varchar(15) PRIMARY KEY
 ) ENGINE = INNODB;
 
 CREATE TABLE food(
-  item_description varchar(25) NOT NULL,
-  sale_record_id bigint REFERENCES transaction(transaction_id),
+  item_description varchar(25),
+  transaction_id bigint REFERENCES transaction,
   supplier varchar(15) REFERENCES brand,
   category varchar(20) REFERENCES food_category,
   unit_price decimal(6,2),
@@ -14,24 +14,20 @@ CREATE TABLE food(
   price_total decimal(6,2),
   item_discount decimal(6,2),
   price decimal(6,2),
-  PRIMARY KEY(sale_record_id, item_description)
+  PRIMARY KEY(sale_record_id)
 ) ENGINE = INNODB;
 
 CREATE TABLE food_category(
-  department varchar(15) NOT NULL,
-  category varchar(15) NOT NULL,
-  PRIMARY KEY (department, category)
+  department varchar(15),
+  category varchar(15) PRIMARY KEY
 ) ENGINE = INNODB;
 
 CREATE TABLE transaction(
-  transaction_id bigint NOT NULL,
-  timedate datetime NOT NULL, /*e.g.: '12/11/2015 14:15' */
+  transaction_id bigint REFERENCES operation_type,
+  timedate datetime, /*e.g.: '12/11/2015 14:15' */
+  c_name varchar(10) REFERENCES customer_type(customer_name),
   cashier varchar(50) REFERENCES employee(cashier),
-  c_type varchar(10) REFERENCES customer_type(customer_name),
-  o_type varchar(10) REFERENCES operation_type(type),
-  pay_method varchar(10) REFERENCES payment_method(tender_type),
-  type_of_card varchar(16) REFERENCES card_type(card),
-  receipt_num bigint,
+  receipt_num varchar(10) REFERENCES payment_method(receipt_num),
   gratuity decimal(6,2),
   subtotal decimal(6,2),
   discount decimal(6,2),
@@ -41,29 +37,30 @@ CREATE TABLE transaction(
 ) ENGINE = INNODB;
 
 CREATE TABLE food_transacion(
-  transaction_id bigint REFERENCES transaction,
+  transaction_id bigint REFERENCES food,
   timedate datetime REFERENCES transaction,
-  item_description varchar(25) REFERENCES food,
-  PRIMARY KEY(transaction_id, timedate, item_description)
+  PRIMARY KEY(transaction_id, timedate)
 ) ENGINE = INNODB;
 
 CREATE TABLE customer_type(
-  customer_name varchar(10) PRIMARY KEY NOT NULL
+  customer_name varchar(10) PRIMARY KEY
 ) ENGINE = INNODB;
 
 CREATE TABLE employee(
-  cashier varchar(30) PRIMARY KEY NOT NULL
+  cashier varchar(30) PRIMARY KEY
 ) ENGINE = INNODB;
 
 CREATE TABLE operation_type(
-  type varchar(10) PRIMARY KEY NOT NULL
+  type varchar(10),
+  transaction_id bigint PRIMARY KEY
 ) ENGINE = INNODB;
 
 CREATE TABLE payment_method(
-  tender_type varchar(10) PRIMARY KEY NOT NULL,
-  card_title varchar(20) REFERENCES card_type(card)
+  tender_type varchar(10),
+  receipt_num varchar(20) REFERENCES card_type
 ) ENGINE = INNODB;
 
 CREATE TABLE card_type(
-  card varchar(20) PRIMARY KEY NOT NULL
+  card varchar(20),
+  receipt_num bigint PRIMARY KEY
 ) ENGINE = INNODB;
