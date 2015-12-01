@@ -25,6 +25,9 @@
     case 'login':
       handle_login();
       break;
+    case 'register':
+      handle_register();
+      break;
   }
 
   //LOGIN
@@ -65,6 +68,38 @@
           require "index.php";
         }
       }
+    }
+  }
+
+  //REGISTER
+  function handle_register(){
+    $username = empty($_POST['username']) ? '' : $_POST['username'];
+    $password = empty($_POST['password']) ? '' : $_POST['password'];
+    if($password == '' || $username==''){ //EMPTY USERNAME OR PASSWORD - PRINT ERROR
+      $error = "Not enough characters in username or password.";
+      require "adminpage.php";
+    }else{
+      require_once("db.conf"); //MySQL CONNECTION
+      $link = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die("Connect Error".mysqli_error($link));
+      $sql = "INSERT INTO user(username,salt,hashed_password,admin) VALUES (?,?,?,0)";
+      if ($stmt = mysqli_prepare($link, $sql)){
+          $salt = mt_rand();
+          $hpass = password_hash($salt.$_POST['password'], PASSWORD_BCRYPT)  or die("bind param");
+          mysqli_stmt_bind_param($stmt, "sss", $username, $salt, $hpass) or die("bind param");
+          if(mysqli_stmt_execute($stmt)){
+            mysqli_close();
+            $success = "Username and password created succesfully!";
+            require "adminpage.php";
+          }else{
+            mysqli_close();
+            $error = "Error: username and password could not be created.";
+            require "adminpage.php";
+          }
+        }else{
+          mysqli_close();
+          $error = "Error: username and password could not be created.";
+          require "adminpage.php";
+        }
     }
   }
 

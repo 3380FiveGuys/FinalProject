@@ -15,7 +15,7 @@ h3#title{
   padding: 20px 0px 20px 0px;
   background-color: rgb(28,28,28);
 }
-form#login{
+#loginForm{
   display: inline-block;
   background-color: rgb(28,28,28);
   padding: 5px 20px 5px 20px;
@@ -23,6 +23,16 @@ form#login{
   margin: 0px;
   border-radius: 5px;
 }
+
+#registerForm{
+  display: inline-block;
+  background-color: rgb(28,28,28);
+  padding: 5px 20px 5px 20px;
+  position: relative;
+  margin: 0px;
+  border-radius: 5px;
+}
+
 .content{
   margin-top: 50px;
   text-align: center;
@@ -34,16 +44,19 @@ form#login{
 }
 #inputTextDiv{
   padding: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   position: relative;
 }
+
 p{
   margin: 15px 0px 15px 0px;
   padding: 5px;
 }
-button{
-  width: 100px;
-  height: 35px;
+
+/*Log in button index.php*/
+#formButton{
+  width: 200px;
+  height: 30px;
   border: 0px;
   border-radius: 3px;
   background-color: rgb(255,126,41);
@@ -51,6 +64,7 @@ button{
   font-size: 15px;
 }
 
+/*Login input text fields index.php*/
 #user{
   color: rgb(255,255,255);
   width: 182px;
@@ -69,7 +83,7 @@ button{
   border: 1px solid rgb(0,0,0);
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
-  margin: 2px 0px 15px 0px;
+  margin: 2px 0px 5px 0px;
   background-color: rgb(50,50,50);
 }
 #pass:focus{
