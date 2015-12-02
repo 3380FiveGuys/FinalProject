@@ -5,10 +5,10 @@
 SELECT COUNT(transaction_id) FROM transaction;
 
 /*Number of transactions last month*/
-SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATEADD(month, -1, getDate());
+SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 month);
 
 /*Number of transactions last week*/
-SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATEADD(week, -7, getDate());
+SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 week);
 
 /* Number of transactions for all Sundays*/
 SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1;
@@ -23,10 +23,11 @@ SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1;
 SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1 ORDER BY timedate DESC LIMIT 1;
 
 /*All money made last month for a specific cashier*/
-SELECT SUM(total) AS 'Kim Burton Sales' FROM transaction WHERE timedate >= DATEADD(month, -1, getDate()) AND Cashier = 'Kim Burton';
+SELECT SUM(total) AS 'Kim Burton Sales' FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 month) AND Cashier = 'Kim Burton';
 
 /*All money made last week for a specific cashier*/
-SELECT SUM(total) AS 'Rachel Dicke Sales' FROM transaction WHERE timedate >= DATEADD(month, -1, getDate()) AND Cashier = 'Rachel Dicke';
+SELECT SUM(total) AS 'Rachel Dicke Sales' FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 week) AND Cashier = 'Rachel Dicke';
+
 
 /*Display average gratuity as a percentage on a specific day*/
 SELECT AVG(total/gratuity) AS '% Gratuity'  FROM transaction WHERE DAYOFWEEK(timedate) = 1;
