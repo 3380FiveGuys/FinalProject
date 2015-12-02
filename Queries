@@ -1,0 +1,40 @@
+/****FOR DAYOFWEEK FUNCTION****/
+/*1 = Sunday| 2 = Monday| 3 = Tuesday| 4 = Wednesday| 5 = Thursday| 6 = Friday| 7 = Saturday*/
+
+/*Number of total transactions*/
+SELECT COUNT(transaction_id) FROM transaction;
+
+/*Number of transactions last month*/
+SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATEADD(month, -1, getDate());
+
+/*Number of transactions last week*/
+SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATEADD(week, -7, getDate());
+
+/* Number of transactions for all Sundays*/
+SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1;
+
+/*Number of transactions for the past Sunday*/
+SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1 LIMIT 1;
+
+/*Sum of money made from all sales on Sundays*/
+SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1;
+
+/*All money made last Sunday*/
+SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1 ORDER BY timedate DESC LIMIT 1;
+
+/*All money made last month for a specific cashier*/
+SELECT SUM(total) AS 'Kim Burton Sales' FROM transaction WHERE timedate >= DATEADD(month, -1, getDate()) AND Cashier = 'Kim Burton';
+
+/*All money made last week for a specific cashier*/
+SELECT SUM(total) AS 'Rachel Dicke Sales' FROM transaction WHERE timedate >= DATEADD(month, -1, getDate()) AND Cashier = 'Rachel Dicke';
+
+/*Display average gratuity as a percentage on a specific day*/
+SELECT AVG(total/gratuity) AS '% Gratuity'  FROM transaction WHERE DAYOFWEEK(timedate) = 1;
+
+/*Display average gratuity as a percentage for a specific cashier*/
+SELECT AVG(total/gratuity) AS '% Gratuity'  FROM transaction WHERE Cashier = 'Kim Burton';
+SELECT AVG(total/gratuity) AS '% Gratuity'  FROM transaction WHERE Cashier = 'Rachel Dicke';
+
+/*Display average discount as a percentage given by a specific cashier*/
+SELECT AVG(total/discount) FROM transaction WHERE Cashier = 'Kim Burton';
+SELECT AVG(total/discount) FROM transaction WHERE Cashier = 'Rachel Dicke';
