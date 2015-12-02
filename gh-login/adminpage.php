@@ -11,6 +11,7 @@
 <html>
   <head>
     <link href='stylesheet.css' type='text/css' rel='stylesheet'>
+    <script src="Chart.js"></script>
   </head>
   <body>
     <div id='menu'>
@@ -23,8 +24,9 @@
     <div id='content' class='content'>
       <h1>Welcome admin!</h1>
       <p>This is the content of your admin web page.</p>
-      <a href='weekofday.php'>Report by week of day</a>
+      <a href='weekofday.php'>Report by day of week</a>
       <a href='employee.php'>Employee performance<a>
+      <a href='salesbyday.php'>Sales By Day</a>
     </div>
   </body>
 </html>
