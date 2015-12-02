@@ -1,30 +1,48 @@
 /*CSS Stylesheet.css*/
+@font-face {
+   font-family: ghFont;
+   src: url(Brandon_reg.otf);
+}
 body{
-  font-family: sans-serif;
+  font-family: ghFont,sans-serif;
   margin: 0px;
   background-color: rgb(17,17,17);
   color: rgb(255,255,255);
 }
-h3{
+h3{ /**/
   margin: 0px;
   padding: 20px 0px 30px 0px;
   color: rgb(255,126,41);
 }
-h3#title{
-  text-align: center;
-  padding: 20px 0px 20px 0px;
-  background-color: rgb(28,28,28);
+img{
+  margin-top: 10px;
 }
-#loginForm{
+ul{
   display: inline-block;
-  background-color: rgb(28,28,28);
-  padding: 5px 20px 5px 20px;
-  position: relative;
   margin: 0px;
-  border-radius: 5px;
+  padding: 0px;
+  text-align: center;
+  float: right;
+}
+li{
+  margin-top: 20px;
+  float: left;
+  display: inline;
+}
+li a{
+  display: block;
+  padding: 20px 20px 20px 20px;
+  color: rgb(255,126,41);
+  text-decoration: none;
+}
+#topbar{ /**/
+  height: 100px;
+  padding: 0px 0px 0px 0px;
+  background-color: rgb(28,28,28);
+  vertical-align: middle;
 }
 
-#registerForm{
+#textForm{
   display: inline-block;
   background-color: rgb(28,28,28);
   padding: 5px 20px 5px 20px;
@@ -37,6 +55,7 @@ h3#title{
   margin-top: 50px;
   text-align: center;
 }
+/*index.php and register.php form divs*/
 #inputButtonDiv{
   padding: 0px;
   margin-bottom: 10px;
@@ -53,7 +72,7 @@ p{
   padding: 5px;
 }
 
-/*Log in button index.php*/
+/*Login button in index.php and register button in register.php*/
 #formButton{
   width: 200px;
   height: 30px;
@@ -64,7 +83,7 @@ p{
   font-size: 15px;
 }
 
-/*Login input text fields index.php*/
+/*Login input text fields index.php and register.php*/
 #user{
   color: rgb(255,255,255);
   width: 182px;
@@ -88,4 +107,9 @@ p{
 }
 #pass:focus{
   color: rgb(255,255,255);
+}
+
+#chart{
+  background-color: rgba(28,28,28,0.5);
+  padding: 10px;
 }

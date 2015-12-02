@@ -53,7 +53,7 @@
 
       window.onload = function(){
         var ctx = document.getElementById("chart").getContext("2d");
-        window.myBarChart = new Chart(ctx).Bar(data);
+        var myBarChart = new Chart(ctx).Bar(data, options);
       }
 
       var data = {
@@ -61,27 +61,39 @@
           datasets: [
             {
               label: "Total Sales by Day of the Week",
-              fillColor: "rgba(151,187,205,0.5)",
-              strokeColor: "rgba(151,187,205,0.8)",
-              highlightFill: "rgba(151,187,205,0.75)",
-              highlightStroke: "rgba(151,187,205,1)",
+              fillColor: "rgba(255,126,41,0.5)",
+              strokeColor: "rgba(255,126,41,0.8)",
+              highlightFill: "rgba(255,126,41,0.75)",
+              highlightStroke: "rgba(255,126,41,1)",
               data: [monday,tuesda,wednes,thursd,friday,saturd,sunday]
             }
           ]
       };
 
+    var options =  {
+    scaleShowGridLines : true,
+    scaleGridLineColor : "rgba(28,28,28,0.5)",
+    scaleGridLineWidth : 1,
+    scaleShowHorizontalLines: true,
+    scaleShowVerticalLines: false,
+
+};
+
     </script>
   </head>
   <body>
-    <div id='menu'>
-      <a id="homeButton" href="adminpage.php">HOME</a>
-      <form action='logout.php' method='POST'>
-        <button type='submit' id='logoutButton' name='button' value='logout'>Log out</button>
-      </form>
+    <div id='topbar'>
+      <img src='logo.png' height=72 width=250 alt='Günter Hans Login'>
+      <ul>
+        <li><a id="homeButton" href="adminpage.php">HOME</a></li>
+        <li><a id="usersButton" href="register.php">SIGN UP</a></li>
+        <li><a id="logoutButton" href="logout.php">LOGOUT</a></li>
+      </ul>
     </div>
     <div id='content' class='content'>
       <div id=sales1>
-        <canvas id="chart" width="1000" height="500"></canvas><br>
+        <h4>Total Sales per Day of the Week</h4>
+        <canvas id="chart" width="700" height="400"></canvas>
       </div>
     </div>
   </body>

@@ -15,15 +15,16 @@
     <link href='stylesheet.css' type='text/css' rel='stylesheet'>
   </head>
   <body>
-    <div id='menu'>
-      <a id="homeButton" href="adminpage.php">HOME</a>
-      <a id="registerButton" href="register.php">USERS</a>
-      <form action='logout.php' method='POST'>
-        <button type='submit' id='logoutButton' name='button' value='logout'>Log out</button>
-      </form>
+    <div id='topbar'>
+      <img src='logo.png' height=72 width=250 alt='Günter Hans Login'>
+      <ul>
+        <li><a id="homeButton" href="adminpage.php">HOME</a></li>
+        <li><a id="usersButton" href="register.php">SIGN UP</a></li>
+        <li><a id="logoutButton" href="logout.php">LOGOUT</a></li>
+      </ul>
     </div>
     <div id='content' class='content'>
-      <form id='registerForm' action='users.php' method='POST'>
+      <form id='textForm' action='users.php' method='POST'>
         <p>Enter a username and password to register a user</p>
         <input type=hidden name='requestFromRegister' value=true>
         <div id='inputTextDiv'>

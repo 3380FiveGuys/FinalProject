@@ -113,15 +113,39 @@
   <head>
     <script src="Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <script>
+
+  		var lineChartData = {
+  			labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+  			datasets : [
+  				{
+  					label: "Income",
+  					fillColor: "rgba(151,187,205,0.2)",
+  					strokeColor: "rgba(151,187,205,1)",
+  					pointColor: "rgba(151,187,205,1)",
+  					pointStrokeColor: "#fff",
+  					pointHighlightFill: "#fff",
+  					pointHighlightStroke: "rgba(151,187,205,1)",
+  					data : ["<?PHP echo $Monday;?>","<?PHP echo $Tuesday;?>","<?PHP echo $Wednesday;?>","<?PHP echo $Thursday;?>","<?PHP echo $Friday;?>","<?PHP echo $Monday;?>","<?PHP echo $Sunday;?>"]
+  				}
+    		]
+    	}
+
+    	window.onload = function(){
+    		var ctx = document.getElementById("canvas").getContext("2d");
+    		window.myLine = new Chart(ctx).Line(lineChartData);
+    	}
+    	</script>
   </head>
 
   <body>
-    <div id='menu'>
-      <a id="homeButton" href="adminpage.php">HOME</a>
-      <a id="usersButton" href="register.php">USERS</a>
-      <form action='logout.php' method='POST'>
-        <button type='submit' id='logoutButton' name='button' value='logout'>Log out</button>
-      </form>
+    <div id='topbar'>
+      <img src='logo.png' height=72 width=250 alt='Günter Hans Login'>
+      <ul>
+        <li><a id="homeButton" href="adminpage.php">HOME</a></li>
+        <li><a id="usersButton" href="register.php">SIGN UP</a></li>
+        <li><a id="logoutButton" href="logout.php">LOGOUT</a></li>
+      </ul>
     </div>
     <div id='content' class='content'>
       <h3>Summary of sales by day of the week</h3>
@@ -134,47 +158,10 @@
 
     <div class="graph">
         <div>
-            <canvas id="canvas" height="450" width="600"></canvas>
+            <canvas id="canvas" height="200" width="300"></canvas>
         </div>
     </div>
 
-
-	<script>
-
-		var lineChartData = {
-			labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-			datasets : [
-				{
-					label: "Income",
-					fillColor: "rgba(151,187,205,0.2)",
-					strokeColor: "rgba(151,187,205,1)",
-					pointColor: "rgba(151,187,205,1)",
-					pointStrokeColor: "#fff",
-					pointHighlightFill: "#fff",
-					pointHighlightStroke: "rgba(151,187,205,1)",
-					data : ["<?PHP echo $Monday;?>","<?PHP echo $Tuesday;?>","<?PHP echo $Wednesday;?>","<?PHP echo $Thursday;?>","<?PHP echo $Friday;?>","<?PHP echo $Monday;?>","<?PHP echo $Sunday;?>"]
-				}/*,
-				{
-					label: "Discount",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [1,2,3,4,5,6,7]
-				}*/
-			]
-
-		}
-
-	window.onload = function(){
-		var ctx = document.getElementById("canvas").getContext("2d");
-		window.myLine = new Chart(ctx).Line(lineChartData, {
-			responsive: true
-		});
-	}
-	</script>
     <p>
 		<?PHP
 			echo "<br><br><hr>Monday " . $limit . " Week Income Total: $" . $Monday . "<br>";

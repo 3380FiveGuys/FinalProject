@@ -10,12 +10,14 @@
 <html>
   <head>
     <link href='stylesheet.css' type='text/css' rel='stylesheet'>
-    <title>GH Login</title>
+    <title>G&uuml;nter Hans Login</title>
   </head>
   <body>
-    <h3 id='title'>G&uuml;nter Hans - Login</h3>
+    <div id='topbar'>
+      <img src='logo.png' height=72 width=250 alt='Günter Hans Login'>
+    </div>
     <div class='content'>
-      <form id='loginForm' action='users.php' method='POST'>
+      <form id='textForm' action='users.php' method='POST'>
         <h3>Login</h3>
         <div id='inputTextDiv'>
           <input type='text' id='user' name='username' placeholder='username'><br>
@@ -29,9 +31,9 @@
             echo "<p>".$error."</p>";
           }
         ?>
+        <p>Admin page: admin admin</p>
       </form>
     </div>
     <br>
-    <p>Admin page: admin admin</p>
   </body>
 </html>
