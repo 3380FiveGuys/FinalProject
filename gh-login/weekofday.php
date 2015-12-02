@@ -6,6 +6,16 @@
 		header("Location: users.php");
 		exit;
 	}
+
+    require_once "db.conf";
+    $link = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die("Connect Error".mysqli_error($link));
+    $sql = "SELECT sum(total) FROM transaction
+  	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Sunday'
+  	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Sunday'
+  	        LIMIT 3;";
+    $result = mysqli_query($link,$sql);
+    $row = mysqli_fetch_array($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +43,7 @@
         <input type="radio" name="dayofweek" class="weekOfDayRadio" value="Sunday">Sunday
       </form>
       <p>Here goes a graph</p>
+      <?php print_r($row); ?>
     </div>
   </body>
 </html>
