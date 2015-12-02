@@ -14,13 +14,15 @@ SELECT COUNT(transaction_id) FROM transaction WHERE timedate >= DATE_ADD(curdate
 SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1;
 
 /*Number of transactions for the past Sunday*/
-SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1 LIMIT 1;
+//SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1 LIMIT 1;
+SELECT COUNT(transaction_id) FROM transaction WHERE DAYOFWEEK(timedate) = 1 AND timedate >= DATE_ADD(curdate(), INTERVAL -1 week);
 
 /*Sum of money made from all sales on Sundays*/
 SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1;
 
 /*All money made last Sunday*/
-SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1 ORDER BY timedate DESC LIMIT 1;
+//SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1 ORDER BY timedate DESC LIMIT 1;
+SELECT SUM(total) FROM transaction WHERE DAYOFWEEK(timedate) = 1 AND timedate >= DATE_ADD(curdate(), INTERVAL -1 week);
 
 /*All money made last month for a specific cashier*/
 SELECT SUM(total) AS 'Kim Burton Sales' FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 month) AND Cashier = 'Kim Burton';
