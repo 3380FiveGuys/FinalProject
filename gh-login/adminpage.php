@@ -23,6 +23,7 @@
     <div id='content' class='content'>
       <h1>Welcome admin!</h1>
       <p>This is the content of your admin web page.</p>
+      <a href='weekofday.php'>Report by week of day</a>
     </div>
   </body>
 </html>
