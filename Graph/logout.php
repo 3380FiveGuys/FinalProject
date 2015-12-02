@@ -11,6 +11,6 @@
 	}
 
   session_destroy();
-  header("Location: users.php");
+  header("Location: login.php");
   exit;
 ?>
