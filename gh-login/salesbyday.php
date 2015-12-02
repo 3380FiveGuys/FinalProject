@@ -59,14 +59,14 @@
       var data = {
           labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
           datasets: [
-              {
-                  label: "Total Sales by Day of the Week",
-                  fillColor: "rgba(40,150,20,0.5)",
-                  strokeColor: "rgba(220,220,220,0.8)",
-                  highlightFill: "rgba(220,220,220,0.75)",
-                  highlightStroke: "rgba(220,220,220,1)",
-                  data: [monday,tuesda,wednes,thursd,friday,saturd,sunday]
-              }
+            {
+              label: "Total Sales by Day of the Week",
+              fillColor: "rgba(151,187,205,0.5)",
+              strokeColor: "rgba(151,187,205,0.8)",
+              highlightFill: "rgba(151,187,205,0.75)",
+              highlightStroke: "rgba(151,187,205,1)",
+              data: [monday,tuesda,wednes,thursd,friday,saturd,sunday]
+            }
           ]
       };
 

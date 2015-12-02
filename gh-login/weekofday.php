@@ -6,16 +6,16 @@
 		header("Location: users.php");
 		exit;
 	}
-		
+
 	if(isset($_GET['numberOfWeeks'])) {
 		$limit = $_GET['numberOfWeeks'];
 	} else {
 		$limit = 1;
 	}
-	
+
 	require_once "db.conf";
     $link = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die("Connect Error".mysqli_error($link));
-    
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Monday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Monday'
@@ -23,12 +23,12 @@
     $result = mysqli_query($link,$sql);
     $Monday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Monday[$x];
-	} 
+	}
 	$Monday = $count;
-	
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Tuesday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Tuesday'
@@ -36,12 +36,12 @@
     $result = mysqli_query($link,$sql);
     $Tuesday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Tuesday[$x];
-	} 
+	}
 	$Tuesday = $count;
-	
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Wednesday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Wednesday'
@@ -49,12 +49,12 @@
     $result = mysqli_query($link,$sql);
     $Wednesday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Wednesday[$x];
-	} 
+	}
 	$Wednesday = $count;
-		
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Thursday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Thursday'
@@ -62,12 +62,12 @@
     $result = mysqli_query($link,$sql);
     $Thursday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Thursday[$x];
-	} 
+	}
 	$Thursday = $count;
-	
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Friday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Friday'
@@ -75,12 +75,12 @@
     $result = mysqli_query($link,$sql);
     $Friday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Friday[$x];
-	} 
+	}
 	$Friday = $count;
-	
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Saturday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Saturday'
@@ -88,12 +88,12 @@
     $result = mysqli_query($link,$sql);
     $Saturday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Saturday[$x];
-	} 
+	}
 	$Saturday = $count;
-	
+
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Sunday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Sunday'
@@ -101,20 +101,20 @@
     $result = mysqli_query($link,$sql);
     $Sunday = mysqli_fetch_array($result);
 	$count = 0;
-	
+
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Sunday[$x];
-	} 
+	}
 	$Sunday = $count;
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="Chart.js"></script>  
+    <script src="Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
   </head>
-  
+
   <body>
     <div id='menu'>
       <a id="homeButton" href="adminpage.php">HOME</a>
@@ -129,9 +129,9 @@
         <input type="number" name="numberOfWeeks" min="1" max="52">
         <input type="submit">
       </form>
-      
+
     </div>
-    
+
     <div class="graph">
         <div>
             <canvas id="canvas" height="450" width="600"></canvas>
@@ -140,7 +140,7 @@
 
 
 	<script>
-		
+
 		var lineChartData = {
 			labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
 			datasets : [
@@ -176,7 +176,7 @@
 	}
 	</script>
     <p>
-		<?PHP 
+		<?PHP
 			echo "<br><br><hr>Monday " . $limit . " Week Income Total: $" . $Monday . "<br>";
 			echo "Tuesday " . $limit . " Week Income Total: $" . $Tuesday . "<br>";
 			echo "Wednesday " . $limit . " Week Income Total: $" . $Wednesday . "<br>";
