@@ -19,7 +19,7 @@
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Monday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Monday'
-  	        LIMIT $limit;";
+  	        LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Monday = mysqli_fetch_array($result);
 	$count = 0;
@@ -27,12 +27,12 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Monday[$x];
 	}
-	$Monday = $count;
+	$Monday = round($count/$limit, 2);
 
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Tuesday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Tuesday'
-  	        LIMIT $limit;";
+  	        LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Tuesday = mysqli_fetch_array($result);
 	$count = 0;
@@ -40,12 +40,12 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Tuesday[$x];
 	}
-	$Tuesday = $count;
+	$Tuesday = round($count/$limit, 2);
 
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Wednesday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Wednesday'
-  	        LIMIT $limit;";
+  	        LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Wednesday = mysqli_fetch_array($result);
 	$count = 0;
@@ -53,12 +53,12 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Wednesday[$x];
 	}
-	$Wednesday = $count;
+	$Wednesday = round($count/$limit, 2);
 
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Thursday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Thursday'
-  	        LIMIT $limit;";
+  	        LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Thursday = mysqli_fetch_array($result);
 	$count = 0;
@@ -66,12 +66,12 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Thursday[$x];
 	}
-	$Thursday = $count;
+	$Thursday = round($count/$limit, 2);
 
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Friday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Friday'
-  	        LIMIT $limit;";
+  	        LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Friday = mysqli_fetch_array($result);
 	$count = 0;
@@ -79,12 +79,12 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Friday[$x];
 	}
-	$Friday = $count;
+	$Friday = round($count/$limit, 2);
 
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Saturday'
   	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Saturday'
-  	        LIMIT $limit;";
+  	        LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Saturday = mysqli_fetch_array($result);
 	$count = 0;
@@ -92,12 +92,12 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Saturday[$x];
 	}
-	$Saturday = $count;
+	$Saturday = round($count/$limit, 2);
 
 	$sql = "SELECT total FROM transaction
   	        WHERE DATE_FORMAT(CAST(timedate AS date), '%W') = 'Sunday'
-  	        ORDER BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Sunday'
-  	        LIMIT $limit;";
+			GROUP BY DATE_FORMAT(CAST(timedate AS date), '%W') = 'Saturday'
+			LIMIT $limit";
     $result = mysqli_query($link,$sql);
     $Sunday = mysqli_fetch_array($result);
 	$count = 0;
@@ -105,7 +105,8 @@
 	for ($x = 0; $x <= $limit; $x++) {
 		$count = $count + $Sunday[$x];
 	}
-	$Sunday = $count;
+	$Sunday = round($count/$limit, 2);
+	
 ?>
 
 <!DOCTYPE html>
@@ -147,31 +148,15 @@
         <li><a id="logoutButton" href="logout.php">LOGOUT</a></li>
       </ul>
     </div>
-    <div id='content' class='content'>
-      <h3>Summary of sales by day of the week</h3>
+    <div class='content'>
+      <h3>Average Income per Day of the Week</h3>
       <form action="weekofday.php">
-        <input type="number" name="numberOfWeeks" min="1" max="52">
+        <p>Number of weeks to go back:</p>
+		<input type="number" name="numberOfWeeks" min="1" max="52" value="<?PHP echo $limit; ?>">
         <input type="submit">
       </form>
-
+	
+      <canvas id="canvas" height="300" width="500"></canvas>
     </div>
-
-    <div class="graph">
-        <div>
-            <canvas id="canvas" height="200" width="300"></canvas>
-        </div>
-    </div>
-
-    <p>
-		<?PHP
-			echo "<br><br><hr>Monday " . $limit . " Week Income Total: $" . $Monday . "<br>";
-			echo "Tuesday " . $limit . " Week Income Total: $" . $Tuesday . "<br>";
-			echo "Wednesday " . $limit . " Week Income Total: $" . $Wednesday . "<br>";
-			echo "Thursday " . $limit . " Week Income Total: $" . $Thursday . "<br>";
-			echo "Friday " . $limit . " Week Income Total: $" . $Friday . "<br>";
-			echo "Monday " . $limit . " Week Income Total: $" . $Monday . "<br>";
-			echo "Sunday " . $limit . " Week Income Total: $" . $Sunday . "<br>";
-        ?>
-	</p>
   </body>
 </html>
