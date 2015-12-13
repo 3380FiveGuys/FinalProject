@@ -42,12 +42,13 @@ SELECT AVG(total/gratuity) AS '% Gratuity'  FROM transaction WHERE Cashier = 'Ra
 SELECT AVG(total/discount) FROM transaction WHERE Cashier = 'Kim Burton';
 SELECT AVG(total/discount) FROM transaction WHERE Cashier = 'Rachel Dicke';
 
-/*Number of sales between 4pm and 10pm*/
-SELECT COUNT(transaction_id) AS Sales FROM transaction WHERE DATE_FORMAT(CAST(timedate as date), '%H') BETWEEN 16 and 22;
+/*UPDATED Number of sales between 4pm and 10pm*/
+SELECT COUNT(transaction_id) AS Sales FROM transaction WHERE DATE_FORMAT(timedate, '%H') BETWEEN 16 and 22;
 
-/*This should limit results from 1 week ago to the current date*/
-SELECT COUNT(transaction_id) AS Sales FROM transaction WHERE DATE_FORMAT(CAST(timedate as date), '%H') BETWEEN 16 and 22 AND timedate BETWEEN DATE_ADD(curdate(), INTERVAL -1 week) and curdate();
+/*UPDATED This should limit results from 1 week ago to the current date between 4pm and 10pm*/
+SELECT COUNT(transaction_id) AS Sales FROM transaction WHERE DATE_FORMAT(timedate, '%H') 
+BETWEEN 16 AND 22 AND timedate BETWEEN DATE_ADD(curdate(), INTERVAL -1 week) and curdate();
 
-/*This should limit results from 1 month ago to the current date*/
-SELECT COUNT(transaction_id) AS Sales FROM transaction WHERE DATE_FORMAT(CAST(timedate as date), '%H') BETWEEN 16 and 22 AND timedate BETWEEN DATE_ADD(curdate(), INTERVAL -1 month) and curdate();
-
+/*UPDATED This should limit results from 1 month ago to the current date between 4pm and 10pm*/
+SELECT COUNT(transaction_id) AS Sales FROM transaction WHERE DATE_FORMAT(timedate, '%H') 
+BETWEEN 16 AND 22 AND timedate BETWEEN DATE_ADD(curdate(), INTERVAL -1 month) and curdate();
