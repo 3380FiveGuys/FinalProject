@@ -1,4 +1,16 @@
-<!-- employee.php -->
+<!--  
+Last Modified: 12/15/2015
+
+The MIT License (MIT)
+Copyright (c) 2015 Carlos Martinez-Villar, Clark Walters, Ryan King, Sijae Brown
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
 <?php
   session_start();
 	$loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
@@ -6,26 +18,47 @@
 		header("Location: users.php");
 		exit;
 	}
+	
+	if(isset($_GET['numberOfWeeks'])) {
+		$limit = $_GET['numberOfWeeks'];
+	} else {
+		$limit = 1;
+	}
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <link href='stylesheet.css' type='text/css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
   </head>
-  <body>
-    <div id='menu'>
-      <a id="homeButton" href="adminpage.php">HOME</a>
-      <form action='logout.php' method='POST'>
-        <button type='submit' id='logoutButton' name='button' value='logout'>Log out</button>
-      </form>
-    </div>
-    <div id='content' class='content'>
-      <div id=sales>
 
+  <body>
+    <div id='topbar'>
+      <img src='logo.png' height=72 width=250 alt='Günter Hans Login'>
+      <ul>
+        <li><a id="homeButton" href="adminpage.php">HOME</a></li>
+        <li><a id="usersButton" href="register.php">SIGN UP</a></li>
+        <li><a id="logoutButton" href="logout.php">LOGOUT</a></li>
+      </ul>
+    </div>
+    <div class='content'>
+      <h3>Employee Performance</h3>
+      
+      <div id="graphCon">
+          <p>Sales</p>
+          <iframe src="employeeSales.php" height="650" width="500" scrolling="no" frameBorder="0"></iframe>
       </div>
-      <div id=tips></div>
-      <div id=discounts></div>
+      
+      <div id="graphCon">
+          <p>Gratuity</p>
+          <iframe src="employeeGratuity.php" height="650" width="500" scrolling="no" frameBorder="0"></iframe>
+      </div>
+      
+      <div id="graphCon">
+          <p>Discount</p>
+          <iframe src="employeeDiscount.php" height="650" width="500" scrolling="no" frameBorder="0"></iframe>
+      </div>
+      
     </div>
   </body>
 </html>
