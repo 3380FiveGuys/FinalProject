@@ -1,5 +1,4 @@
 <!--  
-Author of this page: Clark D. Walters  
 Last Modified: 12/15/2015
 
 The MIT License (MIT)
