@@ -96,7 +96,7 @@ DEALINGS IN THE SOFTWARE.
       </ul>
     </div>
     <div class='content'>
-      <h3>Last Months Report</h3>
+      <h3>Last Month - Comparison of Sales vs Tips vs Discount</h3>
       <canvas id="canvas" height="400" width="600"></canvas>
 	  <p id="legend"></p>
     </div>

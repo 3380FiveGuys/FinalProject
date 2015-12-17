@@ -1,4 +1,4 @@
-<!--   
+<!--
 Last Modified: 12/15/2015
 
 The MIT License (MIT)
@@ -26,21 +26,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     $result = mysqli_query($link,$sql);
 	$trans = mysqli_fetch_array($result);
 	$trans = $trans[0];
-	
+
 	$sql = "SELECT SUM(gratuity) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -3 month)";
     $result = mysqli_query($link,$sql);
 	$gratuity = mysqli_fetch_array($result);
 	$gratuity = $gratuity[0];
-	
+
 	$sql = "SELECT SUM(discount) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -3 month)";
     $result = mysqli_query($link,$sql);
 	$discount = mysqli_fetch_array($result);
 	$discount = $discount[0];
-	
-	$sql = "SELECT COUNT(total) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -3 month)";
-    $result = mysqli_query($link,$sql);
-	$count = mysqli_fetch_array($result);
-	$count = $count[0];
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +43,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <head>
     <script src="Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
-    <script>	
+    <script>
 		var lineChartData = {
-  			labels : ["Sales","Gratuity","Discounts","Transactions"],
+  			labels : ["Sales","Gratuity","Discounts"],
   			datasets : [
   				{
   					label: "Sales",
@@ -58,11 +53,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					strokeColor: "rgba(255,126,41,0.8)",
 					highlightFill: "rgba(255,126,41,0.75)",
 					highlightStroke: "rgba(255,126,41,1)",
-  					data: ["<?PHP echo $trans;?>","<?PHP echo $gratuity;?>","<?PHP echo $discount;?>","<?PHP echo $count;?>"]
+  					data: ["<?PHP echo $trans;?>","<?PHP echo $gratuity;?>","<?PHP echo $discount;?>"]
   				}
     		]
     	}
-				
+
     	window.onload = function(){
     		var ctx = document.getElementById("canvas").getContext("2d");
     		window.myLine = new Chart(ctx).Bar(lineChartData);
@@ -88,7 +83,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       </ul>
     </div>
     <div class='content'>
-      <h3>Last 3 Months Report</h3>      
+      <h3>Last 3 Months - Comparison of Sales vs Tips vs Discounts</h3>
       <canvas id="canvas" height="600" width="500"></canvas>
 	  <p id="legend"></p>
     </div>

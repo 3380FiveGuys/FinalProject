@@ -75,7 +75,7 @@ DEALINGS IN THE SOFTWARE.
     </script>
   </head>
     <div class='content'>
-    	<canvas id="canvas" height="600" width="500"></canvas>
+    	<canvas id="canvas" height="400" width="600"></canvas>
     </div>
   </body>
 </html>

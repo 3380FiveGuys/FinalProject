@@ -97,7 +97,7 @@ DEALINGS IN THE SOFTWARE.
     </div>
     <div class='content'>
       <h3>Last Years Report</h3>
-      <canvas id="canvas" height="600" width="500"></canvas>
+      <canvas id="canvas" height="400" width="600"></canvas>
 	  <p id="legend"></p>
     </div>
   </body>

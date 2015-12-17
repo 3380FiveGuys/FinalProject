@@ -50,10 +50,14 @@ DEALINGS IN THE SOFTWARE.
     </div>
     <div class='content'>
       <h1>Welcome admin!</h1>
-      <p>This is the content of your admin web page.</p>
-      <a href='weekofday.php'>Report by day of week</a><br>
-      <a href='employee.php'>Employee performance<a><br>
-      <a href='salesbyday.php'>Sales By Day</a><br>
+      <a class='link' href='weekofday.php'>Report by day of week</a><br>
+      <a class='link' href='employee.php'>Employee performance<a><br>
+      <a class='link' href='salesbyday.php'>Sales By Day</a><br>
+      <a class='link' href='salesbytime.php'>Sales By Time</a><br>
+      <a class='link' href='lastYear.php'>Last Year Comparison of Sales, Tips, and Discounts</a><br>
+      <a class='link' href='lastMonth.php'>Last Month Comparison of Sales, Tips, and Discounts</a><br>
+      <a class='link 'href='threeMonth.php'>Three month Comparison of Sales, Tips, and Discounts</a><br>
+      <a class='link' href='allTime.php'>All Time Comparison of Sales, Tips, and Discounts</a><br>
     </div>
   </body>
 </html>
