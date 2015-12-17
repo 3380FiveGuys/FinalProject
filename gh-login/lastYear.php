@@ -1,14 +1,27 @@
-<!-- 
+<!--
 Last Modified: 12/15/2015
 
 The MIT License (MIT)
 Copyright (c) 2015 Carlos Martinez-Villar, Clark Walters, Ryan King, Sijae Brown
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+ Software, and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
 -->
 
 <?php
@@ -26,21 +39,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     $result = mysqli_query($link,$sql);
 	$trans = mysqli_fetch_array($result);
 	$trans = $trans[0];
-	
+
 	$sql = "SELECT SUM(gratuity) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 year)";
     $result = mysqli_query($link,$sql);
 	$gratuity = mysqli_fetch_array($result);
 	$gratuity = $gratuity[0];
-	
+
 	$sql = "SELECT SUM(discount) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 year)";
     $result = mysqli_query($link,$sql);
 	$discount = mysqli_fetch_array($result);
 	$discount = $discount[0];
-	
-	$sql = "SELECT COUNT(total) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 year)";
-    $result = mysqli_query($link,$sql);
-	$count = mysqli_fetch_array($result);
-	$count = $count[0];
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +56,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <head>
     <script src="Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
-    <script>	
+    <script>
 		var lineChartData = {
-  			labels : ["Sales","Gratuity","Discounts","Transactions"],
+  			labels : ["Sales","Gratuity","Discounts"],
   			datasets : [
   				{
   					label: "Sales",
@@ -58,11 +66,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					strokeColor: "rgba(255,126,41,0.8)",
 					highlightFill: "rgba(255,126,41,0.75)",
 					highlightStroke: "rgba(255,126,41,1)",
-  					data: ["<?PHP echo $trans;?>","<?PHP echo $gratuity;?>","<?PHP echo $discount;?>","<?PHP echo $count;?>"]
+  					data: ["<?PHP echo $trans;?>","<?PHP echo $gratuity;?>","<?PHP echo $discount;?>"]
   				}
     		]
     	}
-				
+
     	window.onload = function(){
     		var ctx = document.getElementById("canvas").getContext("2d");
     		window.myLine = new Chart(ctx).Bar(lineChartData);
@@ -88,7 +96,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       </ul>
     </div>
     <div class='content'>
-      <h3>Last Years Report</h3>      
+      <h3>Last Years Report</h3>
       <canvas id="canvas" height="600" width="500"></canvas>
 	  <p id="legend"></p>
     </div>
