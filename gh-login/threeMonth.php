@@ -23,17 +23,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     $link = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die("Connect Error".mysqli_error($link));
 
 	$sql = "SELECT SUM(total) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -3 month)";
-    $result = mysqli_query($link,$sql);
+  $result = mysqli_query($link,$sql);
 	$trans = mysqli_fetch_array($result);
 	$trans = $trans[0];
 
 	$sql = "SELECT SUM(gratuity) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -3 month)";
-    $result = mysqli_query($link,$sql);
+  $result = mysqli_query($link,$sql);
 	$gratuity = mysqli_fetch_array($result);
 	$gratuity = $gratuity[0];
 
 	$sql = "SELECT SUM(discount) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -3 month)";
-    $result = mysqli_query($link,$sql);
+  $result = mysqli_query($link,$sql);
 	$discount = mysqli_fetch_array($result);
 	$discount = $discount[0];
 ?>

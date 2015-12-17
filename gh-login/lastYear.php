@@ -36,12 +36,12 @@ DEALINGS IN THE SOFTWARE.
     $link = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die("Connect Error".mysqli_error($link));
 
 	$sql = "SELECT SUM(total) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 year)";
-    $result = mysqli_query($link,$sql);
+  $result = mysqli_query($link,$sql);
 	$trans = mysqli_fetch_array($result);
 	$trans = $trans[0];
 
 	$sql = "SELECT SUM(gratuity) FROM transaction WHERE timedate >= DATE_ADD(curdate(), INTERVAL -1 year)";
-    $result = mysqli_query($link,$sql);
+  $result = mysqli_query($link,$sql);
 	$gratuity = mysqli_fetch_array($result);
 	$gratuity = $gratuity[0];
 
@@ -63,9 +63,9 @@ DEALINGS IN THE SOFTWARE.
   				{
   					label: "Sales",
   					fillColor: "rgba(255,126,41,0.5)",
-					strokeColor: "rgba(255,126,41,0.8)",
-					highlightFill: "rgba(255,126,41,0.75)",
-					highlightStroke: "rgba(255,126,41,1)",
+  					strokeColor: "rgba(255,126,41,0.8)",
+  					highlightFill: "rgba(255,126,41,0.75)",
+  					highlightStroke: "rgba(255,126,41,1)",
   					data: ["<?PHP echo $trans;?>","<?PHP echo $gratuity;?>","<?PHP echo $discount;?>"]
   				}
     		]
