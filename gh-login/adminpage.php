@@ -50,7 +50,6 @@ DEALINGS IN THE SOFTWARE.
     </div>
     <div class='content'>
       <h1>Welcome admin!</h1>
-      <a class='link' href='weekofday.php'>Report by day of week</a><br>
       <a class='link' href='employee.php'>Employee performance<a><br>
       <a class='link' href='salesbyday.php'>Sales By Day</a><br>
       <a class='link' href='salesbytime.php'>Sales By Time</a><br>

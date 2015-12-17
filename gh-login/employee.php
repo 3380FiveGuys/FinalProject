@@ -30,7 +30,6 @@ DEALINGS IN THE SOFTWARE.
 		header("Location: users.php");
 		exit;
 	}
-
 ?>
 
 <!DOCTYPE html>
@@ -51,17 +50,17 @@ DEALINGS IN THE SOFTWARE.
     <div class='content'>
       <h3>Employee Performance</h3>
         <div id="graphCon">
-            <p>Average Sale($) - By Employee</p>
+            <p>Average Sale (dollars) - By Employee</p>
             <iframe src="employeeSales.php" height="400" width="600" scrolling="no" frameBorder="0"></iframe>
         </div>
 
         <div id="graphCon">
-            <p>Average Tip($) Received - By Employee</p>
+            <p>Average Tip (dollars) Received - By Employee</p>
             <iframe src="employeeGratuity.php" height="400" width="600" scrolling="no" frameBorder="0"></iframe>
         </div>
 
         <div id="graphCon">
-            <p>Average Discount($) Given - By Employee</p>
+            <p>Average Discount (dollars) Given - By Employee</p>
             <iframe src="employeeDiscount.php" height="400" width="600" scrolling="no" frameBorder="0"></iframe>
         </div>
     </div>
